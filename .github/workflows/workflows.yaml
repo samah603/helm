@@ -7,5 +7,11 @@ jobs:
     steps:
       - name: git clone
         run: git clone https://github.com/samah603/6digi.git
+
       - name: docker login
         run: docker login -u smap1104 -p ${{ Secrets.DOCKER_REGISTRY }}
+
+      - name: build and push image
+        run: |
+          cd 6digi
+          ls -la
