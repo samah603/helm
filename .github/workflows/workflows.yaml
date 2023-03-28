@@ -5,7 +5,5 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
-      - name: check server-info
-        run: lsb_release -a
-      - name: display wording
-        run: echo hello ${{ github.actor }}
+      - name: docker login
+        run: docker login -u smap1104 -p ${{ Secrets.DOCKER_REGISTRY }}
