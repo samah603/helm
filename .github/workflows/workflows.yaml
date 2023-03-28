@@ -2,10 +2,10 @@ name: example-flow
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
-  Create Docker Image:
+  Create-Docker-Image:
     runs-on: ubuntu-latest
     steps:
-      - name: git checkout
+      - name: git clone
         run: git clone https://github.com/samah603/6digi.git
       - name: docker login
         run: docker login -u smap1104 -p ${{ Secrets.DOCKER_REGISTRY }}
