@@ -15,3 +15,5 @@ jobs:
         run: |
           cd 6digi
           ls -la
+          docker build -t smap1104/6digi:10.0.0 .
+          docker push smap1104/6digi:10.0.0
