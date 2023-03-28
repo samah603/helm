@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.name }}
+  namespace: {{ .Values.app.namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.app.name }}
+  replicas: {{ .Values.app.replicas }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.name }}
+    spec:
+      volumes:
+      - name: {{ .Values.pvc.name }}
+        persistentVolumeClaim:
+          claimName: {{ .Values.pvc.name }}
+      # - name: {{ .Values.app.confmapname }}
+      #   configMap:
+      #     name: {{ .Values.configmap.name }}
+      #     items:
+      #       - key: index.html
+      #         path: index.html
+      containers:
+        - name: app-api-con
+          image: {{ .Values.app.image }}
+          resources:
+            limits:
+              memory: {{ .Values.app.limits.memory }}
+              cpu: {{ .Values.app.limits.cpu }}
+            requests:
+              memory: {{ .Values.app.requests.memory }}
+              cpu: {{ .Values.app.requests.cpu }}
+          volumeMounts:
+            # - mountPath: {{ .Values.app.volumemounts.mountpath }}
+            #   readOnly: true
+            #   name: {{ .Values.app.confmapname }}
+            - name: {{ .Values.pvc.name }}
+              mountPath: /storage

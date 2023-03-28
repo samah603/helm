@@ -1,0 +1,38 @@
+app:
+  name: app-api
+  namespace: appapi
+  replicas: 1
+  image: smap1104/random-6-digi:1.2.0
+  confmapname: html-conf
+  limits:
+    memory: "512Mi"
+    cpu: "210m"
+  requests:
+    memory: "256Mi"
+    cpu: "200m"
+  volumemounts:
+    mountpath: /app/public/
+
+svc:
+  name: app-svc
+  ports:
+    port: 3000
+    targetPort: 3000
+
+
+ing:
+  name: app-ing
+  portnumber: 3000
+
+hpa:
+  name: app-hpa
+  minReplicas: 1
+  maxReplicas: 2
+  targetcpu: 20
+
+pvc:
+  name: app-pvc
+  storage: 1Gi
+
+configmap:
+  name: html-config
