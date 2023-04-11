@@ -19,8 +19,8 @@ jobs:
           docker push smap1104/github-runners:1.0.0
           
       - name: deployed
-        run: helm upgrade --install -f /home/samatcha_h/helm/values.yaml lab-github  /home/samatcha_h/helm/ --set image=smap1104/github-runners:1.0.0
-      # cd /home/samatcha_h/actions-runner/_work & rm -rf helm
+        run: helm upgrade --install -f /home/samatcha_h/actions-runner/_work/helm/helm/helmvalues.yaml lab-github  /home/samatcha_h/actions-runner/_work/helm/helm/helm --set image=smap1104/github-runners:1.0.0
+          cd /home/samatcha_h/actions-runner/_work & rm -rf helm
 
       # - name: deploy-minikube
       #   run: |
