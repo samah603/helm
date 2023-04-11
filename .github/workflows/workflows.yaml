@@ -3,7 +3,8 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
   Create-Docker-Image:
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: git clone
         run: git clone https://github.com/samah603/6digi.git
