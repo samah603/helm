@@ -1,24 +1,19 @@
 name: Deploy-minikube
-run-name: ${{ github.actor }} Lab deploy-minikube
+run-name: ${{ github.actor }} lab CI/CD
 on: [push]
 jobs:
   Create-Docker-Image:
     runs-on: ubuntu-latest
     #runs-on: self-hosted
     steps:
-      - name: git checkout
+      - name: git-checkout
+        run: git clone https://github.com/samah603/helm.git -b minikube
+
+      - name: docker login
+        run: docker login -u smap1104 -p ${{ Secrets.DOCKER_REGISTRY }}
+
+      - name: docker build
         run: |
-          git clone https://github.com/samah603/helm.git -b minikube
-          pwd
-          ls -la
-          cd helm
-          ls -la
-
-      # - name: docker login
-      #   run: docker login -u smap1104 -p ${{ Secrets.DOCKER_REGISTRY }}
-
-      # - name: build and push image
-      #   run: |
-      #     cd 6digi
-      #     docker build -t smap1104/6digi:10.0.${{ gitHub.run_number }} .
-      #     docker push smap1104/6digi:10.0.${{ gitHub.run_number }}
+          cd helm/docker
+          docker build -t smap1104/github-runners:1.0.${{ gitHub.run_number }} .
+          docker push smap1104/github-runners:10.0.${{ gitHub.run_number }}
