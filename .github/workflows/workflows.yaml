@@ -25,7 +25,9 @@ jobs:
         run: git clone https://github.com/samah603/helm.git -b minikube
 
       - name: deploy-minikube
-        run: helm upgrade -i github-deploy-helm -f helm/values.yaml helm
+        run: |
+        kubectl create app-api
+        helm upgrade -i github-deploy-helm -f helm/values.yaml helm
 
       # - name: deployed
       #   run: |
