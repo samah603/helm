@@ -14,11 +14,10 @@ jobs:
 
       - name: docker build
         run: |
-          pwd
+          cd helm/docker
           docker build -t smap1104/github-runners:1.0.0 .
           docker push smap1104/github-runners:1.0.0
-          cd /home/samatcha_h/actions-runner/_work
-          rm -rf helm
+          cd /home/samatcha_h/actions-runner/_work & rm -rf helm
 
       # - name: deploy-minikube
       #   run: |
