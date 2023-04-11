@@ -7,8 +7,9 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: git clone
-        run: git clone https://github.com/samah603/helm.git
-        CMD: pwd
+        run: |
+          git clone https://github.com/samah603/helm.git
+          pwd
       # - name: docker login
       #   run: docker login -u smap1104 -p ${{ Secrets.DOCKER_REGISTRY }}
 
