@@ -2,7 +2,7 @@ app:
   name: app-api
   namespace: appapi
   replicas: 1
-  image: smap1104/github-runners:1.0.0
+  image: smap1104/random-6-digi:1.2.0
   confmapname: html-conf
   limits:
     memory: "512Mi"
