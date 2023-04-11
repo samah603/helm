@@ -6,13 +6,12 @@ jobs:
     #runs-on: ubuntu-latest
     runs-on: self-hosted
     steps:
-      - name: git clone
+      - name: git checkout
         run: |
-          git clone https://github.com/samah603/helm.git
-          git checkout minikube
+          git clone https://github.com/samah603/helm.git -b minikube
           pwd
-          ls
-          
+          ls -la
+
       # - name: docker login
       #   run: docker login -u smap1104 -p ${{ Secrets.DOCKER_REGISTRY }}
 
