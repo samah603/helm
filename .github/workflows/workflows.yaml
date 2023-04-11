@@ -1,5 +1,5 @@
-name: example-flow
-run-name: ${{ github.actor }} is learning GitHub Actions
+name: Deploy-minikube
+run-name: ${{ github.actor }} Lab deploy-minikube
 on: [push]
 jobs:
   Create-Docker-Image:
@@ -7,13 +7,13 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: git clone
-        run: git clone https://github.com/samah603/6digi.git
+        run: git clone https://github.com/samah603/helm.git
+        pwd
+      # - name: docker login
+      #   run: docker login -u smap1104 -p ${{ Secrets.DOCKER_REGISTRY }}
 
-      - name: docker login
-        run: docker login -u smap1104 -p ${{ Secrets.DOCKER_REGISTRY }}
-
-      - name: build and push image
-        run: |
-          cd 6digi
-          docker build -t smap1104/6digi:10.0.${{ gitHub.run_number }} .
-          docker push smap1104/6digi:10.0.${{ gitHub.run_number }}
+      # - name: build and push image
+      #   run: |
+      #     cd 6digi
+      #     docker build -t smap1104/6digi:10.0.${{ gitHub.run_number }} .
+      #     docker push smap1104/6digi:10.0.${{ gitHub.run_number }}
