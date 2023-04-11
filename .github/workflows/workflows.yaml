@@ -13,8 +13,7 @@ jobs:
 
       - name: docker build
         run: |
-          pwd
-          ls -la
+          cd random-6-digi
           docker build -t smap1104/github-runners:1.0.0 .
           docker push smap1104/github-runners:1.0.0
           
