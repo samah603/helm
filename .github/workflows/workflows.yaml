@@ -7,7 +7,10 @@ jobs:
     #runs-on: self-hosted
     steps:
       - name: git-checkout
-        run: git clone https://github.com/samah603/helm.git -b minikube
+        # run: git clone https://github.com/samah603/helm.git -b minikube
+        run: |
+          cd helm
+          git pull
 
       - name: docker login
         run: docker login -u smap1104 -p ${{ Secrets.DOCKER_REGISTRY }}
