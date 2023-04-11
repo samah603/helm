@@ -8,15 +8,25 @@ jobs:
       - name: git-checkout
         run: git clone https://github.com/samah603/random-6-digi.git
 
-      - name: docker login
+      - name: docker-login
         run: docker login -u smap1104 -p ${{ Secrets.DOCKER_REGISTRY }}
 
-      - name: docker build
+      - name: docker-build
         run: |
           cd random-6-digi
           docker build -t smap1104/github-runners:1.0.0 .
           docker push smap1104/github-runners:1.0.0
-          
+
+  Deployed:
+    runs-on: self-hosted
+    needs: Build
+    steps:
+      - name: git-checkout
+        run: git clone https://github.com/samah603/helm.git -b minikube
+
+      - name: deploy-minikube
+        run: helm upgrade -i github-deploy-helm -f helm/values.yaml helm
+
       # - name: deployed
       #   run: |
       #    helm upgrade --install lab-github  -f /home/samatcha_h/actions-runner/_work/helm/helm/helm/values.yaml --set image=smap1104/github-runners:1.0.0
