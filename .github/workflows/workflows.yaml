@@ -7,10 +7,7 @@ jobs:
     #runs-on: self-hosted
     steps:
       - name: git-checkout
-        # run: git clone https://github.com/samah603/helm.git -b minikube
-        run: |
-          cd helm
-          git pull
+        run: git clone https://github.com/samah603/helm.git -b minikube
 
       - name: docker login
         run: docker login -u smap1104 -p ${{ Secrets.DOCKER_REGISTRY }}
@@ -18,10 +15,10 @@ jobs:
       - name: docker build
         run: |
           pwd
-          # docker build -t smap1104/github-runners:1.${{ gitHub.run_number }}.0 .
-          # docker push smap1104/github-runners:1.${{ gitHub.run_number }}.0
           docker build -t smap1104/github-runners:1.0.0 .
           docker push smap1104/github-runners:1.0.0
+          cd /home/samatcha_h/actions-runner/_work
+          rm -rf helm
 
       # - name: deploy-minikube
       #   run: |
