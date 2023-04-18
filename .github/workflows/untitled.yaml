@@ -9,6 +9,8 @@ env:
 jobs:
   build: 
     runs-on: ubuntu-latest
+    outputs:
+      image-version: ${{ steps.create-variable.outputs.image-version }}
     steps:
       - name: check github environment
         run: hostname
@@ -21,6 +23,10 @@ jobs:
 
   deploy: 
     runs-on: self-hosted
+    need: build
     steps:
       - name: check github environment
         run: hostname
+
+      - name: deploy application
+        run: echo "deploying app version ${{ needs.build.outputs.image-version}}"
