@@ -1,8 +1,11 @@
-name: Lab-Workflow
+name: Lab-Workflows
 on:
   push:
     branches:
       - action
+env:
+  WORDING: "Lab-Workflows-Github"
+
 jobs:
   build: 
     runs-on: ubuntu-latest
@@ -12,6 +15,7 @@ jobs:
 
       - name: build application
         run: echo "build for ${{ env.WORDING }}"
+
   deploy: 
     runs-on: self-hosted
     steps:
