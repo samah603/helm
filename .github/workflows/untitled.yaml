@@ -23,7 +23,7 @@ jobs:
 
   deploy: 
     runs-on: self-hosted
-    need: build
+    needs: build
     steps:
       - name: check github environment
         run: hostname
