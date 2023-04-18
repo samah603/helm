@@ -5,6 +5,7 @@ on:
       - action
 env:
   WORDING: "Lab-Workflows-Github"
+  
 
 jobs:
   build: 
@@ -15,8 +16,11 @@ jobs:
       - name: check github environment
         run: hostname
 
-      - name: create variable
-        run: echo "BUILD_ARGS=dev-1.0.0" >> $GITHUB_ENV
+      - name: create-variable
+        id: create-variable
+        run: |
+          echo "BUILD_ARGS=dev-1.0.0" >> $GITHUB_ENV
+          echo "::set-output name=image-version::dev-1.0.0"
 
       - name: build application
         run: echo "build for ${{ env.WORDING }} by $BUILD_ARGS "
