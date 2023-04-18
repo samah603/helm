@@ -26,8 +26,8 @@ jobs:
 
       - name: deploy-minikube
         run: |
-          kubectl create ns appapi
           helm upgrade -i github-deploy-helm -f helm/values.yaml helm
+          rm -rf helm
 
       # - name: deployed
       #   run: |
