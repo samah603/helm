@@ -1,0 +1,18 @@
+name: 'Simple workflow'
+
+on:
+  push:
+    branches: [ poc ]
+
+jobs:
+  print-env:
+    runs-on: ubuntu-latest
+    environment:
+      name: env_qa_automate
+    env:
+      GMAIL_USERNAME: ${{ vars.GMAIL_USERNAME }}
+
+    steps:
+      - name: Print env
+        run: |
+          echo $GMAIL_USERNAME
