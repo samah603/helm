@@ -2,7 +2,7 @@ name: 'Simple workflow'
 
 on:
   push:
-    branches: [ poc ]
+    branches: [ action ]
 
 jobs:
   print-env:
