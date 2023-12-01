@@ -29,4 +29,4 @@ jobs:
     - name: Log env printf
       #if: always()
       run: |
-        echo $GMAIL_USERNAME
+        echo ${{ env.GMAIL_USERNAME }}
