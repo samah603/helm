@@ -16,3 +16,17 @@ jobs:
       - name: Print env
         run: |
           echo $GMAIL_USERNAME
+          
+  Run_Script:
+    runs-on: ubuntu-latest
+    environment: 
+      name: env_qa_automate
+    env:
+      GMAIL_USERNAME: ${{ vars.GMAIL_USERNAME }}
+      TEST_SITE: ${{ vars.TEST_SITE }}
+
+    steps:
+    - name: Log env printf
+      if: always()
+      run: |
+        echo $GMAIL_USERNAME
