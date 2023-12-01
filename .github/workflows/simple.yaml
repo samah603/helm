@@ -27,6 +27,6 @@ jobs:
 
     steps:
     - name: Log env printf
-      if: always()
+      #if: always()
       run: |
         echo $GMAIL_USERNAME
