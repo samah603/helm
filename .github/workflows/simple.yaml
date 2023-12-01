@@ -22,11 +22,11 @@ jobs:
     environment: 
       name: env_qa_automate
     env:
-      GMAIL_USERNAME: ${{ vars.GMAIL_USERNAME }}
+      #GMAIL_USERNAME: ${{ vars.GMAIL_USERNAME }}
       TEST_SITE: ${{ vars.TEST_SITE }}
 
     steps:
     - name: Log env printf
       #if: always()
       run: |
-        echo ${{ env.GMAIL_USERNAME }}
+        echo ${{ env.TEST_SITE }}
